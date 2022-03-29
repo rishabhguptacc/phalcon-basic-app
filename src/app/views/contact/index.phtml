@@ -1,13 +1,20 @@
-<h2>Contacts : </h2>
+<h2>Feedback </h2>
 
 <?= $this->tag->form("contact/query"); ?>
 
     <p>
-        <label for="email">E-mail : </label>
-        <?= $this->tag->textField("email"); ?>
+        
+        <?php echo $this->tag->textArea(
+            [
+                'feedback_data',
+                'This is the content of the text-area', // I've no idea why we are using this line...
+                'cols' => '40',
+                'rows' => 5,
+            ]
+        ) ?>
     </p>
 
     <p>
-        <?php echo $this -> tag -> submitButton("Register"); ?>
+        <?php echo $this -> tag -> submitButton("Send"); ?>
     </p>
 </form>

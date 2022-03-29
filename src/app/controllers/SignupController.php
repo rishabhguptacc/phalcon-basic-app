@@ -24,7 +24,7 @@ class SignupController extends Controller
             $this->view->message = "Not Register succesfully due to following reason: <br>".implode("<br>", $user->getMessages());
         }
 
-        $this->view->disable();
+        
     }
 
     

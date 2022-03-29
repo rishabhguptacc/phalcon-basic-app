@@ -1,4 +1,5 @@
 <?php
+
 use Phalcon\Mvc\Controller;
 
 class ContactController extends Controller
@@ -11,6 +12,23 @@ class ContactController extends Controller
 
     public function QueryAction()
     {
+        // echo "inside queryaction()///\n";
+
+        $feedback = new Feedbacks();
         
+        $feedback->assign(
+            $this->request->getPost(),
+            ['feedback_data']
+        );
+
+        $success = $feedback->save();
+
+        $this->view->success = $success;
+
+        if ($success) {
+            $this->view->message = "Feedback sent succesfully";
+        } else {
+            $this->view->message = "Feedback didn't send due to following reason: <br>".implode("<br>", $feedback->getMessages());
+        }
     }
 }
