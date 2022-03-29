@@ -1,0 +1,13 @@
+<h2>Contacts : </h2>
+
+<?= $this->tag->form("contact/query"); ?>
+
+    <p>
+        <label for="email">E-mail : </label>
+        <?= $this->tag->textField("email"); ?>
+    </p>
+
+    <p>
+        <?php echo $this -> tag -> submitButton("Register"); ?>
+    </p>
+</form>

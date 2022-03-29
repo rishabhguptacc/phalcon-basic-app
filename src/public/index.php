@@ -14,6 +14,7 @@ use Phalcon\Mvc\Application;
 use Phalcon\Url;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Config;
+// use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 $config = new Config([]);
 
@@ -57,19 +58,37 @@ $application = new Application($container);
 
 
 
-// $container->set(
+$container->set(
+    'db',
+    function () {
+        return new Mysql(
+            [
+                'host'     => 'mysql-server',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'phalcondb',
+            ]
+        );
+    }
+);
+
+
+
+// $di->set(
 //     'db',
 //     function () {
-//         return new Mysql(
+//         return new DbAdapter(
 //             [
-//                 'host'     => 'localhost',
+//                 'host'     => '127.0.0.1',
 //                 'username' => 'root',
-//                 'password' => '',
-//                 'dbname'   => 'phalt',
-//                 ]
-//             );
-//         }
+//                 'password' => 'secret',
+//                 'dbname'   => 'tutorial1',
+//             ]
+//         );
+//     }
 // );
+
+
 
 $container->set(
     'mongo',
